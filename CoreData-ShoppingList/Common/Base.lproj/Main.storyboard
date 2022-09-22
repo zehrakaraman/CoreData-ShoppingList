@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="alu-hD-zP9">
-                                <rect key="frame" x="0.0" y="147" width="390" height="663"/>
+                                <rect key="frame" x="0.0" y="91" width="390" height="719"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="bZQ-J4-Nmi" style="IBUITableViewCellStyleDefault" id="RCQ-bM-2Tw">
@@ -43,21 +43,14 @@
                                     <outlet property="delegate" destination="dIr-0D-8Wv" id="YOI-gF-Tfz"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Zwn-8c-8jH">
-                                <rect key="frame" x="0.0" y="91" width="390" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Igc-5y-leT"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Zwn-8c-8jH" firstAttribute="top" secondItem="Igc-5y-leT" secondAttribute="top" id="1Nt-8F-LqY"/>
-                            <constraint firstItem="Zwn-8c-8jH" firstAttribute="trailing" secondItem="Igc-5y-leT" secondAttribute="trailing" id="G4s-Qg-U7a"/>
-                            <constraint firstItem="Zwn-8c-8jH" firstAttribute="leading" secondItem="Igc-5y-leT" secondAttribute="leading" id="LKk-6Q-BF5"/>
                             <constraint firstItem="Igc-5y-leT" firstAttribute="bottom" secondItem="alu-hD-zP9" secondAttribute="bottom" id="QZg-Yp-Dt9"/>
                             <constraint firstItem="Igc-5y-leT" firstAttribute="trailing" secondItem="alu-hD-zP9" secondAttribute="trailing" id="XNy-sW-gab"/>
-                            <constraint firstItem="alu-hD-zP9" firstAttribute="top" secondItem="Zwn-8c-8jH" secondAttribute="bottom" id="bNA-7R-hpe"/>
                             <constraint firstItem="alu-hD-zP9" firstAttribute="leading" secondItem="Igc-5y-leT" secondAttribute="leading" id="p7u-gT-ngz"/>
+                            <constraint firstItem="alu-hD-zP9" firstAttribute="top" secondItem="Igc-5y-leT" secondAttribute="top" id="vGg-pH-Hpc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Shopping List" id="Do2-ZM-jt1">
@@ -69,7 +62,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="searchBar" destination="Zwn-8c-8jH" id="RaO-tK-bVH"/>
                         <outlet property="shoppingTableView" destination="alu-hD-zP9" id="5mG-6z-mRU"/>
                     </connections>
                 </viewController>

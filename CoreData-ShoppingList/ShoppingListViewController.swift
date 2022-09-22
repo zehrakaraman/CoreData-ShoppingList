@@ -10,15 +10,33 @@ import CoreData
 
 class ShoppingListViewController: UIViewController {
 
-    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var shoppingTableView: UITableView!
     
     var shoppingList: [String] = []
     
+    let searchControler = UISearchController(searchResultsController: nil)
+    
+    var filteredItems: [String] = []
+    var isSearchBarEmpty: Bool {
+        return searchControler.searchBar.text?.isEmpty ?? true
+    }
+    
+    var isFiltering: Bool {
+        return searchControler.isActive && !isSearchBarEmpty
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        // UISearchResultsUpdating will inform your class of any text changes within the UISearchBar.
+        searchControler.searchResultsUpdater = self
+        // Set the current view to show the results. No obscure your view.
+        searchControler.obscuresBackgroundDuringPresentation = false
+        searchControler.searchBar.placeholder = "Search Items"
+        navigationItem.searchController = searchControler
+        //
+        definesPresentationContext = false
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,6 +48,13 @@ class ShoppingListViewController: UIViewController {
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         
         fetchItems()
+    }
+    
+    func filterContentForSearchText(_ searchText: String) {
+        filteredItems = shoppingList.filter { (item: String) -> Bool in
+            return item.lowercased().contains(searchText.lowercased())
+        }
+        shoppingTableView.reloadData()
     }
 
     @IBAction func addBtnClicked(_ sender: Any) {
@@ -49,6 +74,15 @@ class ShoppingListViewController: UIViewController {
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
     }
+}
+
+extension ShoppingListViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        filterContentForSearchText(searchBar.text!)
+    }
+    
 }
 
 extension ShoppingListViewController {
@@ -86,16 +120,25 @@ extension ShoppingListViewController {
 }
 
 extension ShoppingListViewController: UITableViewDelegate, UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return shoppingList.count
+        if isFiltering {
+            return filteredItems.count
+        } else {
+            return shoppingList.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let item = shoppingList[indexPath.row]
-        cell.textLabel?.text = item
+        let item: String
+        if isFiltering {
+            item = filteredItems[indexPath.row]
+        } else {
+            item = shoppingList[indexPath.row]
+        }
         
+        cell.textLabel?.text = item
         return cell
     }
 }
