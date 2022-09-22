@@ -58,16 +58,24 @@
 		FA548C2528DC31C00029B3A9 /* CoreData-ShoppingList */ = {
 			isa = PBXGroup;
 			children = (
-				FA548C2628DC31C00029B3A9 /* AppDelegate.swift */,
-				FA548C2828DC31C00029B3A9 /* SceneDelegate.swift */,
+				FA548C3E28DC31FD0029B3A9 /* Common */,
 				FA548C2A28DC31C00029B3A9 /* ViewController.swift */,
-				FA548C2C28DC31C00029B3A9 /* Main.storyboard */,
-				FA548C3228DC31C20029B3A9 /* Assets.xcassets */,
-				FA548C3428DC31C20029B3A9 /* LaunchScreen.storyboard */,
 				FA548C3728DC31C20029B3A9 /* Info.plist */,
 				FA548C2F28DC31C00029B3A9 /* CoreData_ShoppingList.xcdatamodeld */,
 			);
 			path = "CoreData-ShoppingList";
+			sourceTree = "<group>";
+		};
+		FA548C3E28DC31FD0029B3A9 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				FA548C2628DC31C00029B3A9 /* AppDelegate.swift */,
+				FA548C2828DC31C00029B3A9 /* SceneDelegate.swift */,
+				FA548C2C28DC31C00029B3A9 /* Main.storyboard */,
+				FA548C3228DC31C20029B3A9 /* Assets.xcassets */,
+				FA548C3428DC31C20029B3A9 /* LaunchScreen.storyboard */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
